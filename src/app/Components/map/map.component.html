@@ -1,0 +1,10 @@
+<div class="map-container">
+
+  <div class="map-frame" (click)="openDialog()">
+    <div id="map">
+      <span *ngFor="let loc of locationsArray">
+      {{loc.lat}}{{loc.lng}}
+      </span>
+    </div>
+  </div>
+</div>

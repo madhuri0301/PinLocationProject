@@ -1,0 +1,13 @@
+<div>
+    <span>what's on your mind </span>
+</div>
+<div *ngIf="display;"></div>
+<form [formGroup]="createNotesForm" (ngSubmit)="onSubmit()">
+    <div class="text-des">
+        <textarea matInput [class]="input_description" style="height: 50px; font-size: 15px; outline: none;" type="text"
+            placeholder="Write Here..." formControlName="description"></textarea>
+    </div>
+    <div>
+        <button>close</button>
+    </div>
+</form>

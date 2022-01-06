@@ -1,0 +1,60 @@
+<div class="image">
+    <img src="/assets/R (1).png" class="image" alt="">
+</div>
+
+<div>
+    <p class="tag">Sign In To Pin Your Location</p>
+</div>
+
+<div class="container">
+
+    <form [formGroup]="registerForm">
+
+        <div class="FirstLastName" fxLayout="column">
+            <p>
+                <mat-form-field appearance="outline" style="width: 75%;">
+                    <mat-label>Firstname</mat-label>
+                    <input matInput placeholder="" formControlName="firstname" />
+                    <mat-error>Enter the first Name!</mat-error>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="outline" style="width: 75%;">
+                    <mat-label>Lastname</mat-label>
+
+                    <input matInput placeholder="" formControlName="lastname" />
+                    <mat-error>Enter the last Name!</mat-error>
+                </mat-form-field>
+            </p>
+        </div>
+
+        <div class="email">
+            <p>
+                <mat-form-field appearance="outline" style="width: 75%;">
+                    <mat-label>Email</mat-label>
+                    <input type="text" matInput placeholder="" formControlName="email" class="form-control">
+                    <mat-error>Enter the email first!</mat-error>
+                </mat-form-field>
+            </p>
+        </div>
+
+        <div class="password">
+            <p>
+                <mat-form-field appearance="outline" style="width: 75%;">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="" formControlName="password" />
+                    <mat-error>Enter the password!</mat-error>
+                </mat-form-field>
+            </p>
+        </div>
+
+        <div>
+            <button class="btn" mat-stroked-button color="primary1" (click)="onSubmit()">sign Up</button>
+        </div>
+
+        <div class="example-button-row" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="100px">
+            <button class="btn1" mat-button color="primary" routerLink='/login'>sign in instead</button>
+            <button class="btn1" mat-button color="primary">open with</button>
+        </div>
+    </form>
+</div>

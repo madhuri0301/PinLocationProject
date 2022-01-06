@@ -1,0 +1,23 @@
+<table id="users">
+    <thead>
+        <tr >
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Description</th>
+            <th>Address</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let loc of locationsArray ">
+        <tr>
+            <td>{{loc.lat}}</td>
+            <td>{{loc.lng}}</td>
+            <td>{{loc.desc}}</td>
+            <td></td>
+            <div>
+                <button>edit</button>
+                <button>delete</button>
+                <button>view</button>
+            </div>
+    </tbody>
+</table>

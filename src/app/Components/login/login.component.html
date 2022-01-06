@@ -1,0 +1,40 @@
+
+<div class="image">
+    <img src="/assets/R (1).png" class="image" alt="">
+</div>
+<div>
+    <p class="tag">Sign In To Pin Your Location</p>
+</div>
+<div class="container">
+
+    <form [formGroup]="loginForm">
+
+        <div class="FirstLastName" fxLayout="column">
+            <p>
+                <mat-form-field appearance="outline" style="width: 75%;">
+                    <mat-label>email</mat-label>
+                    <input type="text" matInput placeholder="" formControlName="email" class="form-control">
+                    <mat-error>Enter the email first!</mat-error>
+                </mat-form-field>
+            </p>
+
+        </div>
+
+        <div class="email">
+            <p>
+                <mat-form-field appearance="outline" style="width: 75%;">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="" formControlName="password" />
+                    <mat-error>Enter the password!</mat-error>
+                </mat-form-field>
+            </p>
+        </div>
+        <div>
+            <button  class="btn" mat-stroked-button color="primary1" (click)="onSubmit()">sign In</button>
+        </div>
+        <div class="example-button-row" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="100px">
+            <button class="btn1" mat-button color="primary" routerLink='/register'>create an account</button>
+            <button class="btn1" mat-button color="primary" routerLink="/okta">open with</button>
+        </div>
+    </form>
+</div>

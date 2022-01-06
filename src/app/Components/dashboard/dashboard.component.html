@@ -1,0 +1,71 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+
+    <mat-toolbar color="white" class="example-toolbar">
+        <div class="header-sec1" fxLayout="row" fxLayoutGap="10px">
+            <div fxLayout="row" fxLayoutGap="1100px">
+                <div fxLayout="row" fxLayoutGap="20px">
+                    <div (click)="snav.toggle()">
+                        <img src="/assets/R (1).png" class="image" alt="">
+                    </div>
+                    <div>
+                        <p class="title">Pin Location</p>
+                    </div>
+
+                </div>
+
+                <div>
+                    <div fxLayout="row">
+                        <div>
+                            <button mat-button [matMenuTriggerFor]="menu">
+                                <mat-icon class="arrow">keyboard_arrow_down</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item routerLink="/dashboard/table">Table View</button>
+                                <button mat-menu-item routerLink="/dashboard/map">Map View</button>
+                            </mat-menu>
+                        </div>
+                        <div *ngIf="isAuthenticated" (click)="logout()">
+                            <!-- <button mat-button [matMenuTriggerFor]="menu"> -->
+                                <img src="/assets/logout_black_24dp.svg" class="logo" alt="">
+                            <!-- </button> -->
+                            <!-- <mat-menu #menu="matMenu">
+                                <button mat-menu-item routerLink="/login">Logout</button>
+                            </mat-menu> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 50 : 70">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+            fixedTopGap="56">
+            <mat-nav-list>
+
+
+                <div class="navlist" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px" mat-list-item>
+                    <img src="/assets/143-1437620_location-pin-vector-clipart.png" class="blackimage" alt="">
+                    <p class="navName" *ngIf="isExpandable">Pinned Location</p>
+                </div>
+                <div class="navlist" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px" mat-list-item>
+                    <button class="navBtn btnPosition" mat-icon-button (mouseover)="isExpandable=true">
+                        <!-- <mat-icon class="arrow">forward</mat-icon> -->
+                    </button>
+                    <p class="navName nav1" *ngIf="isExpandable" (mouseover)="isExpandable=true">Madhuri</p>
+                </div>
+                <div class="navlist" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px" mat-list-item>
+                    <button class="navBtn btnPosition" mat-icon-button (mouseover)="isExpandable=true">
+                        <!-- <mat-icon class="arrow">forward</mat-icon> -->
+                    </button>
+                    <p class="navName nav1" *ngIf="isExpandable" (mouseover)="isExpandable=true">Shrvan</p>
+                </div>
+
+
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content style="overflow-x: hidden;">
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

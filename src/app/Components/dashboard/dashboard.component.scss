@@ -1,0 +1,115 @@
+.header{
+border: 1px solid black;
+height: 8%;
+width: 100%;
+}
+.image{
+    height: 45px;
+    width: 51px;
+    margin: 5px auto;
+    padding-bottom: 20px;
+    margin-left: 20px;
+    margin-top: 25px;
+}
+.title{
+    margin-top: 35px;
+    font-weight: bold;
+    font-size: 20px;
+}
+.logo{
+    height: 30px;
+    width: 30px;
+  margin-top: 35px;
+    padding-bottom: 20px;
+    margin-left: 20px;
+}
+.blackimage{
+    width: 20px;
+    height: 30px;
+    margin-left: 22px;
+}
+.arrow{
+margin-top: 40px;
+
+}
+.example-container {
+    // border: 10px solid yellowgreen;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .example-is-mobile  {
+    //   border: 10px solid pink;
+    position: fixed;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 2;
+  }
+  .example-toolbar{
+    border: 1px solid gainsboro;
+    color: black;
+    position: fixed;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 2;
+    width: 100vw;
+    height: 80px;
+  }
+  .mat-toolbar{
+      background-color: white;
+  }
+  h1.example-app-name {
+    // border: 2px solid orange;
+    margin-left: 8px;
+  }
+  
+  .example-sidenav-container {
+    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+    flex: 1;
+    // border: 10px solid orchid;
+  }
+  
+  .example-is-mobile .example-sidenav-container {
+    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+       `<body>` to be our scrolling element for mobile layouts. */
+    flex: 1 0 auto;
+    // border: 10px solid yellow;
+  }
+  .mat-drawer-container {
+    background-color: white;
+    /* color: rgba(0,0,0,.87); */
+}
+
+.btnPosition {
+  margin-left: 15px;
+  opacity: 0.6;
+
+
+}
+.button{
+  opacity: 0.6;
+}
+
+.navName {
+  font-size : 16px;
+  cursor : pointer;
+  
+  width : 100px;
+  transform : 300ms ease-in-out;
+  margin-top: 15px;
+}
+.nav1{
+    margin-left: -10px;
+}
+
+.navlist:hover {
+  background-color: rgb(230, 107, 63);
+
+}
+
+
+
