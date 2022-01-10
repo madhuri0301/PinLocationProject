@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'okta/callback', component: OktaCallbackComponent },
   { path: 'okta', component: OktaComponent },
   {
-    path: 'dashboard', component: DashboardComponent, canActivate: [OktaAuthGuard],
+    path: 'dashboard', component: DashboardComponent,
     children: [
       { path: '', redirectTo: '/dashboard/map', pathMatch: 'full' },
       { path: 'map', component: MapComponent, },

@@ -1,4 +1,4 @@
-<table id="users">
+<table id="users" >
     <thead>
         <tr >
             <th>Latitude</th>
@@ -9,15 +9,15 @@
         </tr>
     </thead>
     <tbody *ngFor="let loc of locationsArray ">
-        <tr>
+        <tr >
             <td>{{loc.lat}}</td>
             <td>{{loc.lng}}</td>
             <td>{{loc.desc}}</td>
             <td></td>
-            <div>
-                <button>edit</button>
-                <button>delete</button>
-                <button>view</button>
+            <div >
+                <button  class="btn" mat-stroked-button color="primary1" >View</button>
+                <button  class="btn" mat-stroked-button color="primary1" >Edit</button>
+                <button  class="btn" mat-stroked-button color="primary1" >Delete</button>
             </div>
     </tbody>
 </table>

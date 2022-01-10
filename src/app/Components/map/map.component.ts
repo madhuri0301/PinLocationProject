@@ -3,6 +3,7 @@ import { ElementSchemaRegistry } from '@angular/compiler';
 import { Component, AfterViewInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import * as L from 'leaflet';
+
 import { DataServiceService } from 'src/app/Services/DataService/data-service.service';
 import { OpenDialogComponent } from '../open-dialog/open-dialog.component';
 
@@ -18,17 +19,19 @@ export class MapComponent implements AfterViewInit {
 
   private map: any;
   marker: any;
-  locationsArray:any=[];
-  @Input() Latlong = [];
-  
+  locationsArray: any = [];
+  Latlong: any
+  @Input() address: any=[];
 
-  constructor(private http: HttpClient, public dialog: MatDialog,private dataService: DataServiceService) { }
+
+
+  constructor(private http: HttpClient, public dialog: MatDialog, private dataService: DataServiceService) { }
 
   openDialog() {
     this.dialog.open(OpenDialogComponent);
   }
   ngOnInit(): void {
-     this.getlocation();
+    this.getlocation();
   }
 
   initMap(): void {
@@ -49,12 +52,24 @@ export class MapComponent implements AfterViewInit {
       })
       let Latlong = {
         lat: e.latlng.lat,
-        lng:e.latlng.lng
+        lng: e.latlng.lng
       }
       this.dataService.sendData(Latlong);
+      this.http.get<any>(`https://nominatim.openstreetmap.org/reverse?lat=${Latlong.lat}&lon=${Latlong.lng}&format=json`).subscribe(
+        (req: any) => {
+          console.log(req);
+          console.log("hello world")
+          
+            this.address= req.address
+          
+          this.dataService.sendData(this.address);
+        }
+      )
     })
   }
-  
+
+getaddress(){
+}
   getlocation() {
     this.http.get<any>("http://localhost:8000/getlocation").subscribe(
       (req: any) => {
@@ -63,12 +78,12 @@ export class MapComponent implements AfterViewInit {
         console.log(this.locationsArray)
         this.dataService.sendData(this.locationsArray);
       },
+
       err => {
         console.log("something went wrong")
       }
     )
   }
-  
   ngAfterViewInit(): void {
     this.initMap();
     this.onLocation();

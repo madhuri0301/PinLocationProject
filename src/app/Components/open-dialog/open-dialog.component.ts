@@ -15,39 +15,47 @@ export class OpenDialogComponent implements OnInit {
   createNotesForm!: FormGroup;
   input_description = '';
   display = true;
-  data=[];
-  latitude : any;
-  latlng:any;
+  data = [];
+  latitude: any;
+  latlng: any;
+  address:any;
 
-  constructor(private formBuilder: FormBuilder,private http: HttpClient,private dataService : DataServiceService) { }
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private dataService: DataServiceService) { }
 
   ngOnInit(): void {
-    
+
     this.createNotesForm = this.formBuilder.group({
       description: [''],
     })
     this.dataService.receiveData.subscribe(
-      (Latlong:any)=>{
+      (Latlong: any) => {
         console.log(Latlong);
         this.latlng = Latlong
       })
+    // this.dataService.receiveData.subscribe(
+    //   (address: any) => {
+    //     console.log(address);
+    //     this.address=address
+    //   }
+    // )
   }
   Note() {
     this.display = false;
     console.log(this.createNotesForm.value.description);
   }
-  
+
   onSubmit() {
     this.display = true;
     if (this.createNotesForm.valid) {
       let data = {
         desc: this.createNotesForm.value.description,
-        lat:this.latlng.lat,
-        lng:this.latlng.lng
+        lat: this.latlng.lat,
+        lng: this.latlng.lng,
+        // address:this.address
       }
       console.log("data sent", data);
       this.dataService.sendData(data);
-      this.http.post<any>("http://localhost:8000/auth/location",data)
+      this.http.post<any>("http://localhost:8000/auth/location", data)
         .subscribe(res => {
           console.log("pinned location", res);
         },

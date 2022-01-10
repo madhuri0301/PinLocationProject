@@ -11,7 +11,6 @@ import { OktaAuthService } from '@okta/okta-angular';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   mobileQuery: MediaQueryList;
-  isExpandable: boolean = false;
   private _mobileQueryListener: () => void;
   isAuthenticated: boolean = false;
   name: string = "";

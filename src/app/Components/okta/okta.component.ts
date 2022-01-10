@@ -48,7 +48,4 @@ export class OktaComponent implements OnInit{
         throw error;
       });
   }
-  
-
- 
 }
