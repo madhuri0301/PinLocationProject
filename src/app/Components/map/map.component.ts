@@ -21,8 +21,9 @@ export class MapComponent implements AfterViewInit {
   marker: any;
   locationsArray: any = [];
   Latlong: any
-  @Input() address: any=[];
-
+  @Input() address: any = [];
+  latlong: any;
+  i:any;
 
 
   constructor(private http: HttpClient, public dialog: MatDialog, private dataService: DataServiceService) { }
@@ -54,30 +55,41 @@ export class MapComponent implements AfterViewInit {
         lat: e.latlng.lat,
         lng: e.latlng.lng
       }
-      this.dataService.sendData(Latlong);
+      // this.dataService.sendData(Latlong);
       this.http.get<any>(`https://nominatim.openstreetmap.org/reverse?lat=${Latlong.lat}&lon=${Latlong.lng}&format=json`).subscribe(
         (req: any) => {
           console.log(req);
-          console.log("hello world")
-          
-            this.address= req.address
-          
-          this.dataService.sendData(this.address);
+          this.address = req.display_name
+          // this.dataService.sendData(this.address);
+          let Completeaddress = {
+            latlong : Latlong,
+            Address: this.address
+          }
+          this.dataService.sendData(Completeaddress);
         }
       )
     })
   }
 
-getaddress(){
-}
   getlocation() {
     this.http.get<any>("http://localhost:8000/getlocation").subscribe(
       (req: any) => {
         console.log(req);
         this.locationsArray = req.data;
         console.log(this.locationsArray)
+        var myIcon = L.icon({
+          iconUrl: 'assets/marker-icon.png',
+          iconRetinaUrl:'assets/marker-icon.png',
+          iconSize: [15, 24],
+          iconAnchor: [9, 21],
+          popupAnchor: [0, -14]
+      });
+        for(let i=0; i<req.data.length; ++i){
+          L.marker([req.data[i].lat, req.data[i].lng] , {icon: myIcon}).addTo(this.map)
+        }
         this.dataService.sendData(this.locationsArray);
       },
+    
 
       err => {
         console.log("something went wrong")

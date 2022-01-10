@@ -28,9 +28,9 @@ export class OpenDialogComponent implements OnInit {
       description: [''],
     })
     this.dataService.receiveData.subscribe(
-      (Latlong: any) => {
-        console.log(Latlong);
-        this.latlng = Latlong
+      (Compaddress: any) => {
+        this.latlng = Compaddress.latlong
+        this.address= Compaddress.Address
       })
     // this.dataService.receiveData.subscribe(
     //   (address: any) => {
@@ -51,7 +51,7 @@ export class OpenDialogComponent implements OnInit {
         desc: this.createNotesForm.value.description,
         lat: this.latlng.lat,
         lng: this.latlng.lng,
-        // address:this.address
+        address:this.address
       }
       console.log("data sent", data);
       this.dataService.sendData(data);
