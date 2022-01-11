@@ -8,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableComponent implements OnInit {
 
-  locationsArray:any=[];
+  locationsArray: any = [];
+  id: any;
+  DeleteId: any;
 
-  constructor( private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
 
   ngOnInit(): void {
@@ -29,5 +31,19 @@ export class TableComponent implements OnInit {
       }
     )
   }
-
+  deletelocation(id: any) {
+    let req = {
+      DeleteId: id,
+      isDeleted: true,
+    }
+    console.log("id", req)
+    // console.log(req);
+    this.http.post<any>("http://localhost:8000/deleteLocation", req).subscribe(
+      (res: any) => {
+        console.log("deleted succesfully",res);
+      },
+      err => {
+        console.log("something went wrong");
+      })
+  }
 }

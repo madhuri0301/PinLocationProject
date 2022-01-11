@@ -23,7 +23,7 @@ export class MapComponent implements AfterViewInit {
   Latlong: any
   @Input() address: any = [];
   latlong: any;
-  i:any;
+  i: any;
 
 
   constructor(private http: HttpClient, public dialog: MatDialog, private dataService: DataServiceService) { }
@@ -49,6 +49,7 @@ export class MapComponent implements AfterViewInit {
   }
   onLocation(): void {
     this.map.on('click', (e: any) => {
+      this.openDialog();
       this.marker = L.marker([e.latlng.lat, e.latlng.lng], {
       })
       let Latlong = {
@@ -62,7 +63,7 @@ export class MapComponent implements AfterViewInit {
           this.address = req.display_name
           // this.dataService.sendData(this.address);
           let Completeaddress = {
-            latlong : Latlong,
+            latlong: Latlong,
             Address: this.address
           }
           this.dataService.sendData(Completeaddress);
@@ -78,18 +79,19 @@ export class MapComponent implements AfterViewInit {
         this.locationsArray = req.data;
         console.log(this.locationsArray)
         var myIcon = L.icon({
-          iconUrl: 'assets/marker-icon.png',
-          iconRetinaUrl:'assets/marker-icon.png',
-          iconSize: [15, 24],
+          iconUrl: 'assets/pin.png',
+          iconRetinaUrl: 'assets/pin.png',
+          iconSize: [25, 24],
           iconAnchor: [9, 21],
           popupAnchor: [0, -14]
-      });
-        for(let i=0; i<req.data.length; ++i){
-          L.marker([req.data[i].lat, req.data[i].lng] , {icon: myIcon}).addTo(this.map)
+        });
+        for (let i = 0; i < req.data.length; ++i) {
+          L.marker([req.data[i].lat, req.data[i].lng], { icon: myIcon }).bindPopup(req.data[i].desc)
+            .addTo(this.map);
         }
         this.dataService.sendData(this.locationsArray);
       },
-    
+
 
       err => {
         console.log("something went wrong")
