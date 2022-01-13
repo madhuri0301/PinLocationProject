@@ -37,9 +37,11 @@ export class LoginComponent implements OnInit{
         password: this.loginForm.value.password
       }
       console.log(req)
+     
       this.http.post<any>("http://localhost:8000/auth/login", this.loginForm.value)
         .subscribe((res:any) => {
           console.log("User logged in",res);
+          localStorage.setItem("token",res.access_token)
           this.router.navigateByUrl('/dashboard/map');
         },
         

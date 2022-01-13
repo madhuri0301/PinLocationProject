@@ -7,7 +7,6 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MapviewComponent } from '../mapview/mapview.component';
 
-
 @Component({
   selector: 'app-okta',
   templateUrl: './okta.component.html',

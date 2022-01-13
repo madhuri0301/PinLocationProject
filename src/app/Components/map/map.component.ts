@@ -76,8 +76,6 @@ export class MapComponent implements AfterViewInit {
     this.http.get<any>("http://localhost:8000/getlocation").subscribe(
       (req: any) => {
         console.log(req);
-        this.locationsArray = req.data;
-        console.log(this.locationsArray)
         var myIcon = L.icon({
           iconUrl: 'assets/pin.png',
           iconRetinaUrl: 'assets/pin.png',

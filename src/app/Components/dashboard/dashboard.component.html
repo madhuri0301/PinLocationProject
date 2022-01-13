@@ -24,7 +24,7 @@
                                 <button mat-menu-item routerLink="/dashboard/map">Map View</button>
                             </mat-menu>
                         </div>
-                        <div *ngIf="isAuthenticated" (click)="logout()">
+                        <div (click)="logout()" >
                             <!-- <button mat-button [matMenuTriggerFor]="menu"> -->
                                 <img src="/assets/logout_black_24dp.svg" class="logo" alt="">
                             <!-- </button> -->
